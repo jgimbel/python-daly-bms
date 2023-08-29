@@ -1,0 +1,13 @@
+[Unit]
+Description=Daly BMS
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/opt/python-daly-bms
+ExecStart=/bin/bash -c 'source /opt/python-daly-bms/env/bin/activate && daly-bms-cli -d /dev/USB-0 --mqtt --mqtt-hass'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
